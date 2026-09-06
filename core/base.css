@@ -1,0 +1,155 @@
+/*
+  core/base.css
+  Reset, Typo-Grundlagen, Utilities. Enthält keine Sektionen und
+  keine Farb-/Größenwerte – ausschließlich Verweise auf die
+  Tokens aus tokens/_template.css bzw. tokens/kunde-<slug>.css.
+  Mobile-first: Basisregeln gelten ab 0px, Media Queries setzen
+  erst ab 480px ein.
+*/
+
+/* ------------------------------------------------------------
+   Reset
+------------------------------------------------------------ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img,
+video {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: max(1px, 0.0625em);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------
+   Typo-Grundlagen (ausschließlich über Tokens)
+------------------------------------------------------------ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--f-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-body);
+  color: var(--c-text);
+  background-color: var(--c-bg);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--f-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: var(--fs-3xl);
+}
+
+h2 {
+  font-size: var(--fs-2xl);
+}
+
+h3 {
+  font-size: var(--fs-xl);
+}
+
+h4 {
+  font-size: var(--fs-lg);
+}
+
+small {
+  font-size: var(--fs-sm);
+  color: var(--c-muted);
+}
+
+/* ------------------------------------------------------------
+   Utilities
+------------------------------------------------------------ */
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-4);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--sp-8);
+  }
+}
+
+/* ------------------------------------------------------------
+   Fokus-Sichtbarkeit
+------------------------------------------------------------ */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: calc(var(--border-w) * 2) solid var(--c-accent);
+  outline-offset: var(--sp-1);
+  border-radius: var(--radius);
+}

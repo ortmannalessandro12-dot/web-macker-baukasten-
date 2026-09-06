@@ -1,0 +1,90 @@
+/*
+  tokens/_template.css
+  Vorlage aller CSS-Variablen für eine Kundenseite.
+
+  Beim Anlegen eines neuen Kunden: diese Datei nach
+  tokens/kunde-<slug>.css kopieren und NUR die Werte anpassen –
+  keine neuen Variablennamen erfinden, keine in den Sektionen
+  hartkodieren. Alle Werte hier sind neutrale Platzhalter, keine
+  fertige Markenpalette. Farben werden pro Kunde aus dessen
+  Markenfarben abgeleitet.
+*/
+
+:root {
+
+  /* ------------------------------------------------------------
+     Farben
+     Neutrale Graustufen + ein Platzhalter-Akzent. Beim Kunden
+     durch echte Markenfarben ersetzen. Kontrast von --c-text zu
+     --c-bg und von --c-accent-contrast zu --c-accent muss
+     mindestens 4.5:1 betragen.
+  ------------------------------------------------------------ */
+  --c-bg: #ffffff;             /* Seitenhintergrund */
+  --c-surface: #f2f2f2;        /* Hintergrund abgesetzter Flächen (Cards, Footer) */
+  --c-text: #1a1a1a;           /* Haupttextfarbe auf --c-bg / --c-surface */
+  --c-muted: #5c5c5c;          /* Sekundärtext, Meta-Infos, Captions */
+  --c-accent: #3a3a3a;         /* Markenfarbe / Call-to-Action – MUSS pro Kunde ersetzt werden */
+  --c-accent-contrast: #ffffff;/* Textfarbe auf --c-accent (Buttons etc.) */
+  --c-border: #d9d9d9;         /* Trennlinien, Rahmen, Input-Umrandungen */
+
+  /* ------------------------------------------------------------
+     Schriften
+     Nur Systemschriften oder selbst gehostete Fonts (DSGVO,
+     kein Google-Fonts-CDN). --f-display für Headlines/Akzente,
+     --f-body für Fließtext. Als Platzhalter identische
+     System-Stacks, beim Kunden durch Schriftpaarung ersetzen.
+  ------------------------------------------------------------ */
+  --f-display: ui-serif, Georgia, "Times New Roman", serif;
+  --f-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* ------------------------------------------------------------
+     Fluid Type Scale
+     Basis 16px (= 1rem), Skalenfaktor 1.25 pro Stufe
+     (16 × 1.25^n), Fließtext-Basis bewusst fix für Lesbarkeit
+     (WCAG-Mindestgröße), Überschriften-Stufen fluid über
+     clamp() zwischen 400px und 1100px Viewportbreite.
+  ------------------------------------------------------------ */
+  --fs-xs: 0.75rem;    /* 12px – Skalenwert 16×1.25⁻² ≈ 10.24px, für Lesbarkeit angehoben. Meta, Fine Print */
+  --fs-sm: 0.875rem;   /* 14px – Skalenwert 16×1.25⁻¹ = 12.8px, für Lesbarkeit angehoben. Captions, Labels */
+  --fs-base: 1rem;     /* 16px – Skalenbasis. Fließtext, fix statt fluid (Mindestgröße mobil = Mindestgröße desktop) */
+  --fs-lg: clamp(1.125rem, 1.054rem + 0.286vw, 1.25rem);   /* 18–20px – Lead-Absätze, kleine Überschriften (h4) */
+  --fs-xl: clamp(1.25rem, 1.107rem + 0.571vw, 1.5rem);     /* 20–24px – h3 */
+  --fs-2xl: clamp(1.5rem, 1.214rem + 1.143vw, 2rem);       /* 24–32px – h2 */
+  --fs-3xl: clamp(1.75rem, 1.321rem + 1.714vw, 2.5rem);    /* 28–40px – h1 */
+
+  --lh-tight: 1.15;            /* Zeilenhöhe für Headlines (--f-display) */
+  --lh-body: 1.6;              /* Zeilenhöhe für Fließtext (--f-body) */
+  --tracking-display: 0;       /* letter-spacing für Headlines, z.B. 0.01em für weite Groteske */
+
+  /* ------------------------------------------------------------
+     Abstandsskala
+     4px-Basis (0.25rem-Schritte). --sp-1 = 4px … --sp-12 = 48px.
+     Für alle Innen-/Außenabstände verwenden, keine freien px-
+     Werte in den Sektionen.
+  ------------------------------------------------------------ */
+  --sp-1: 0.25rem;   /* 4px  – minimaler Abstand, z.B. Icon-zu-Text */
+  --sp-2: 0.5rem;    /* 8px  – enger Abstand innerhalb einer Komponente */
+  --sp-3: 0.75rem;   /* 12px – Abstand zwischen verwandten Elementen */
+  --sp-4: 1rem;      /* 16px – Standardabstand, Basiseinheit für Innenabstände */
+  --sp-5: 1.25rem;   /* 20px */
+  --sp-6: 1.5rem;    /* 24px – Abstand zwischen Komponenten innerhalb einer Sektion */
+  --sp-7: 1.75rem;   /* 28px */
+  --sp-8: 2rem;      /* 32px – Abstand zwischen Sektionsblöcken (z.B. Headline zu Content) */
+  --sp-9: 2.25rem;   /* 36px */
+  --sp-10: 2.5rem;   /* 40px */
+  --sp-11: 2.75rem;  /* 44px */
+  --sp-12: 3rem;     /* 48px – größter Innenabstand, z.B. Card-Padding auf Desktop */
+
+  /* ------------------------------------------------------------
+     Layout & Rhythmus
+  ------------------------------------------------------------ */
+  --section-y: clamp(3rem, 2.4rem + 3vw, 6rem);  /* vertikaler Abstand einer Sektion zu Nachbarsektionen. Steuert kompakt/luftig */
+  --content-max: 68.75rem;    /* 1100px – maximale Inhaltsbreite, entspricht größtem Breakpoint */
+
+  /* ------------------------------------------------------------
+     Form & Tiefe
+  ------------------------------------------------------------ */
+  --radius: 0.25rem;                          /* Eckenradius für Buttons, Cards, Bilder. Steuert eckig/weich/rund */
+  --border-w: 1px;                            /* Standard-Rahmenbreite für Trennlinien, Inputs, Cards */
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.12);    /* dezenter Schatten für abgesetzte Flächen, sparsam einsetzen */
+}
