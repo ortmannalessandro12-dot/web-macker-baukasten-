@@ -1,0 +1,64 @@
+<!--
+  core/sections/footer.html
+  DACH-Pflicht-Footer. Fragment zum Einfügen vor </body> jeder
+  Kundenseite. Erwartet, dass die Seite bereits lädt:
+    1. tokens/kunde-<slug>.css (bzw. tokens/_template.css)
+    2. core/base.css
+    3. core/sections/footer.css
+
+  Platzhalter, maschinell pro Kunde zu ersetzen:
+    {{FIRMENNAME}}    Firmenname
+    {{STRASSE}}       Straße + Hausnummer
+    {{PLZ_ORT}}       PLZ + Ort
+    {{TELEFON}}       Telefonnummer, lesbar formatiert (Linktext)
+    {{TELEFON_E164}}  Telefonnummer im E.164-Format (für href="tel:")
+    {{EMAIL}}         E-Mail-Adresse
+    {{JAHR}}          Jahr für die Copyright-Zeile
+
+  "impressum.html" / "datenschutz.html" sind feste relative
+  Seitennamen, keine Platzhalter – bei Bedarf pro Kunde anpassen.
+
+  Öffnungszeiten sind optional und unten auskommentiert.
+-->
+<footer class="site-footer">
+
+  <div class="container site-footer__grid">
+
+    <address class="site-footer__contact">
+      <span class="site-footer__company">{{FIRMENNAME}}</span>
+      <span>{{STRASSE}}</span>
+      <span>{{PLZ_ORT}}</span>
+      <a class="site-footer__link" href="tel:{{TELEFON_E164}}">{{TELEFON}}</a>
+      <a class="site-footer__link" href="mailto:{{EMAIL}}">{{EMAIL}}</a>
+    </address>
+
+    <!-- Optional: Öffnungszeiten. Bei Bedarf einkommentieren und
+         Werte eintragen, dl-Struktur bleibt gleich.
+    <dl class="site-footer__hours">
+      <div class="site-footer__hours-row">
+        <dt>Mo–Fr</dt>
+        <dd>{{OEFFNUNGSZEITEN_WOCHE}}</dd>
+      </div>
+      <div class="site-footer__hours-row">
+        <dt>Sa</dt>
+        <dd>{{OEFFNUNGSZEITEN_SAMSTAG}}</dd>
+      </div>
+    </dl>
+    -->
+
+  </div>
+
+  <div class="container site-footer__bottom">
+
+    <nav class="site-footer__legal" aria-label="Rechtliches">
+      <ul class="site-footer__legal-list">
+        <li><a class="site-footer__link" href="impressum.html">Impressum</a></li>
+        <li><a class="site-footer__link" href="datenschutz.html">Datenschutz</a></li>
+      </ul>
+    </nav>
+
+    <p class="site-footer__copyright">© {{JAHR}} {{FIRMENNAME}}</p>
+
+  </div>
+
+</footer>

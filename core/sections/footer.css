@@ -1,0 +1,95 @@
+/*
+  core/sections/footer.css
+  Styling für core/sections/footer.html. Ausschließlich Tokens,
+  kein hartkodierter Farb-, Größen- oder Abstandswert. Bewusst
+  strukturell neutral gehalten – Differenzierung zwischen Kunden
+  passiert über Tokens, nicht über Varianten dieser Datei.
+  Mobile-first: einspaltig gestapelt, ab 768px mehrspaltig.
+*/
+
+.site-footer {
+  background-color: var(--c-surface);
+  color: var(--c-text);
+  border-top: var(--border-w) solid var(--c-border);
+  font-size: var(--fs-sm);
+}
+
+/* Kontakt- / Öffnungszeiten-Bereich */
+.site-footer__grid {
+  display: grid;
+  gap: var(--sp-8);
+  padding-block: var(--section-y);
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  font-style: normal;
+}
+
+.site-footer__company {
+  font-weight: 700;
+}
+
+.site-footer__hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.site-footer__hours-row + .site-footer__hours-row {
+  margin-top: var(--sp-1);
+}
+
+/* Touch-Ziel: Links mindestens 44x44px (--sp-11 = 2.75rem = 44px) */
+.site-footer__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--sp-11);
+}
+
+/* Rechts-Links + Copyright */
+.site-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  border-top: var(--border-w) solid var(--c-border);
+  padding-block: var(--sp-6);
+}
+
+@media (min-width: 768px) {
+  .site-footer__bottom {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.site-footer__legal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-6);
+}
+
+.site-footer__copyright {
+  font-size: var(--fs-xs);
+  color: var(--c-muted);
+}
+
+/*
+  :focus-visible mit currentColor statt fixer Akzentfarbe, damit
+  der Fokusring auf jedem Footer-Hintergrund (hell wie dunkel)
+  denselben Kontrast hat wie der Linktext selbst.
+*/
+.site-footer :focus-visible {
+  outline: calc(var(--border-w) * 2) solid currentColor;
+  outline-offset: var(--sp-1);
+  border-radius: var(--radius);
+}
