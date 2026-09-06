@@ -1,0 +1,97 @@
+/*
+  core/sections/hero-a.css
+  Styling für core/sections/hero-a.html. Ausschließlich Tokens,
+  kein hartkodierter Farb-, Größen- oder Abstandswert.
+  Mobile-first: Text unten, ab 768px vertikal zentriert.
+*/
+
+.hero-a {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(26rem, 18rem + 24vw, 40rem);
+  padding-block: var(--sp-8);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero-a {
+    align-items: center;
+  }
+}
+
+.hero-a__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/*
+  Overlay als halbtransparenter, token-basierter Verlauf über
+  --c-bg – keine feste Farbe. Der Verlauf bleibt an beiden Enden
+  bewusst kräftig (60–88% Deckkraft), damit der Kontrast zum
+  Text unabhängig von Position (unten mobil, mittig ab 768px)
+  und unabhängig vom Farbklima des Kundenbilds trägt.
+*/
+.hero-a__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--c-bg) 88%, transparent) 0%,
+    color-mix(in srgb, var(--c-bg) 60%, transparent) 100%
+  );
+}
+
+.hero-a__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  text-align: center;
+  color: var(--c-text);
+}
+
+.hero-a__headline {
+  margin: 0;
+}
+
+.hero-a__subline {
+  margin: 0;
+  font-size: var(--fs-lg);
+  color: var(--c-text);
+}
+
+.hero-a__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--sp-11);
+  padding-inline: var(--sp-6);
+  margin-top: var(--sp-2);
+  background-color: var(--c-accent);
+  color: var(--c-accent-contrast);
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/*
+  Doppelring statt einfachem Outline: eine helle (--c-bg) und
+  eine dunkle (--c-text) Ringlinie übereinander. So bleibt der
+  Fokusring sichtbar, unabhängig davon, welcher Bildbereich
+  gerade hinter dem Button liegt.
+*/
+.hero-a__cta:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 calc(var(--border-w) * 2) var(--c-bg),
+    0 0 0 calc(var(--border-w) * 4) var(--c-text);
+}

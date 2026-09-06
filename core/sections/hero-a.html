@@ -1,0 +1,53 @@
+<!--
+  core/sections/hero-a.html
+  Hero-Variante A: vollflächiges Bild, Text als Overlay, zentriert.
+  Generischer Baustein der Baukasten-Bibliothek – keine echten
+  Bilder, keine echten Texte, nur Platzhalter.
+
+  WICHTIG: Diese Sektion liefert die EINZIGE <h1> der Seite (sie
+  steht typischerweise ganz oben). Bei Kombination mit anderen
+  Sektionen (grid-a, about-a, …) darf dort KEINE zweite h1
+  vorkommen – dort ausschließlich h2 aufwärts verwenden.
+
+  Erwartet, dass die Seite bereits lädt:
+    1. tokens/kunde-<slug>.css (bzw. tokens/_template.css)
+    2. core/base.css
+    3. core/sections/hero-a.css
+
+  Platzhalter, maschinell pro Kunde zu ersetzen:
+    {{HERO_BILD_SRC}}    Bildquelle
+    {{HERO_BILD_ALT}}    Alt-Text, Pflichtfeld – niemals leer lassen
+    {{HERO_HEADLINE}}    Haupt-Headline (h1)
+    {{HERO_SUBLINE}}     Subline, optional – Absatz bei Bedarf entfernen
+    {{HERO_CTA_TEXT}}    Linktext des Call-to-Action
+    {{HERO_CTA_HREF}}    Ziel-URL des Call-to-Action
+
+  width/height am <img> sind Platzhalter im Seitenverhältnis 16:9
+  – bei Einbau des echten Bildes durch dessen tatsächliche
+  Pixel-Maße ersetzen (verhindert Layout-Shift, die angezeigte
+  Größe kommt unabhängig davon aus dem CSS).
+
+  loading="lazy" wird hier BEWUSST NICHT gesetzt: Dieses Bild
+  liegt above the fold und muss eager laden. Das ist eine
+  gewollte Abweichung von der Standardregel "jedes Bild lazy",
+  keine vergessene Angabe.
+-->
+<section class="hero-a">
+
+  <img
+    class="hero-a__image"
+    src="{{HERO_BILD_SRC}}"
+    alt="{{HERO_BILD_ALT}}"
+    width="1600"
+    height="900"
+  >
+
+  <div class="hero-a__overlay"></div>
+
+  <div class="hero-a__content container">
+    <h1 class="hero-a__headline">{{HERO_HEADLINE}}</h1>
+    <p class="hero-a__subline">{{HERO_SUBLINE}}</p>
+    <a class="hero-a__cta" href="{{HERO_CTA_HREF}}">{{HERO_CTA_TEXT}}</a>
+  </div>
+
+</section>
